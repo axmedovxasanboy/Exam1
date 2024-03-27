@@ -1,0 +1,43 @@
+a) 
+select COUNT(
+case
+	when staff_position = 'Pro-waiter' 
+	then 1
+end
+) as "Pro-waiters",
+COUNT(
+case
+	when staff_position like 'Junior-wai%'
+	then 1
+end
+) as "Junior-waiters",
+COUNT(
+case
+	when staff_position = 'Senior-waiter'
+	then 1
+end
+) as "Senior-waiters"
+from restaurant r 
+
+
+b)
+select COUNT(distinct"section") as "sections"  from restaurant r 
+
+c)
+select distinct staff_name, count(meal_name) as "served-number"  from restaurant r
+group by distinct staff_name 
+order by count(meal_name) desc 
+limit 2
+
+d)
+select distinct staff_name, count(meal_name) as "served-number", sum(meal_price)*1.1 as "profit"  from restaurant r
+group by distinct staff_name
+order by count(meal_name)  desc 
+limit 2
+
+
+
+
+
+
+

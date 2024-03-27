@@ -7,6 +7,8 @@ import java.io.File;
 import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Scanner;
+import java.util.function.Function;
+import java.util.stream.IntStream;
 
 
 public class Task2 {
@@ -23,6 +25,11 @@ public class Task2 {
 
         List<Student> students = gson.fromJson(builder.toString(), type);
 
+        int age = students.stream().mapToInt(Student::getAge).sum();
+
+        double avg = (double) age / students.size();
+
+        System.out.println("avg = " + avg);
 
     }
 }
